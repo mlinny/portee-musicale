@@ -1,0 +1,11 @@
+<div class="staff">
+  <img src="clef-de-sol.svg" class="clef" alt="Clé de sol" />
+  <div class="note" [style.top.px]="notePosition" *ngIf="selectedNote">
+    ●
+  </div>
+</div>
+
+<select [(ngModel)]="selectedNote" (change)="updateNotePosition()">
+  <option value="">Choisir une note</option>
+  <option *ngFor="let note of notes" [value]="note">{{ note }}</option>
+</select>

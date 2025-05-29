@@ -1,0 +1,24 @@
+.staff {
+  position: relative;
+  width: 400px;
+  height: 150px;
+  margin: 20px;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  background: linear-gradient(to bottom, transparent 19px, black 20px, black 21px, transparent 22px) repeat-y;
+  background-size: 100% 30px;
+  background-position: top;
+}
+
+.clef {
+  position: absolute;
+  left: 5px;
+  top: 30px;
+  height: 90px;
+}
+
+.note {
+  position: absolute;
+  left: 100px;
+  font-size: 24px;
+}

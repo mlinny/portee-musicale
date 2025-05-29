@@ -1,6 +1,6 @@
 .staff {
   position: relative;
-  width: 400px;
+  width: 80%;
   height: 150px;
   margin: 20px;
   border-top: 1px solid black;
@@ -13,8 +13,8 @@
 .clef {
   position: absolute;
   left: 5px;
-  top: 30px;
-  height: 90px;
+  top: 15px;
+  height: 100%;
 }
 
 .note {

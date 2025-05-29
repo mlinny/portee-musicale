@@ -1,0 +1,30 @@
+.portee-container {
+  position: relative;
+  width: 80%;
+  height: 200px;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+}
+
+.clef {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  height: 100%;
+}
+
+.ligne {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: black;
+}
+
+.note {
+  width: 20px;
+  height: 20px;
+  background-color: black;
+  border-radius: 50%;
+  position: absolute;
+}

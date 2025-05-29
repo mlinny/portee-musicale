@@ -1,0 +1,25 @@
+<div class="portee-container">
+  <img src="clef-de-sol.svg" class="clef" alt="Clé de sol" />
+
+  <!-- Lignes de la portée -->
+  <div class="ligne" *ngFor="let i of [0,1,2,3,4]" [style.top.px]="40 + i*20"></div>
+
+  <!-- Note sélectionnée -->
+  <div class="note" *ngIf="noteSelectionnee"
+       [style.top.px]="noteSelectionnee.position"
+       style="left: 80px;">
+  </div>
+</div>
+<!-- Affichage simple de toutes les notes pour debug -->
+<ul>
+  <li *ngFor="let note of notes">
+    {{ note.nom }} - position: {{ note.position }}
+  </li>
+</ul>
+<!-- Sélecteur de notes -->
+<select [(ngModel)]="noteSelectionnee">
+  <option [ngValue]="null" disabled selected>Choisir une note</option>
+  <option *ngFor="let note of notes" [ngValue]="note">
+    {{ note.nom }}
+  </option>
+</select>

@@ -6,8 +6,8 @@
 
   <!-- Note sélectionnée -->
   <div class="note" *ngIf="noteSelectionnee"
-       [style.top.px]="noteSelectionnee.position"
-       style="left: 80px;">
+       [style.top.px]="90 + noteSelectionnee.position"
+       style="left: 130px;">
   </div>
 </div>
 <!-- Affichage simple de toutes les notes pour debug -->

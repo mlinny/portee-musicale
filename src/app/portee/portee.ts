@@ -1,24 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { Note } from '../../models/note.model';
+//import { NoteSelectorComponent } from '../note-selector/note-selector';
 
 @Component({
   selector: 'app-portee',
-  templateUrl: './portee.html',
-  styleUrls: ['./portee.css'],
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule],
+  templateUrl: './portee.html',
+  styleUrls: ['./portee.css']
 })
 export class PorteeComponent {
-  public notes = [
-    { nom: 'Do', position: 40 },
-    { nom: 'Ré', position: 30 },
-    { nom: 'Mi', position: 20 },
-    { nom: 'Fa', position: 10 },
-    { nom: 'Sol', position: 0 },
-    { nom: 'La', position: -10 },
-    { nom: 'Si', position: -20 }
-  ];
+  /*public notesAjoutees: Note[] = [];*/
+  @Input() notes: Note[] = [];
 
-  noteSelectionnee?: { nom: string, position: number } | null = null;
+
+  //ajouterNote(note: Note) {
+  //  this.notesAjoutees.push(note);
+  //}
+
+  getPositionLeft(index: number): number {
+    return 130 + index * 30; // Décalage horizontal
+  }
 }

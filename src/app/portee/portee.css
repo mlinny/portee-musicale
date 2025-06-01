@@ -1,30 +1,81 @@
 .portee-container {
   position: relative;
-  width: 80%;
-  height: 200px;
-  margin-bottom: 1rem;
+  width: auto;
+  height: 150px;
   border: 1px solid #ccc;
 }
 
 .clef {
   position: absolute;
-  top: 15px;
   left: 10px;
-  height: 67%;
+  top: 30px;
+  width: 55px;
+  height:auto;
+}
+
+.barre-verticale {
+  position: absolute;
+  left: 100px;
+  top: 30px;
+  width: 2px;
+  height: 100px;
+  background-color: grey;
 }
 
 .ligne {
   position: absolute;
-  left: 0;
-  right: 0;
-  height: 1px;
+  left: 10px;
+  width: 80%;
+  height: 2px;
   background-color: black;
 }
 
 .note {
+  position: absolute;
   width: 20px;
   height: 20px;
-  background-color: black;
   border-radius: 50%;
-  position: absolute;
+  text-align: center;
+  line-height: 20px;
+  font-weight: bold;
+  user-select: none;
+  cursor: default;
 }
+
+  .note.ronde {
+    background-color: white;
+    border: 2px solid black;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+  }
+
+  .note.blanche {
+    background-color: white;
+    border: 2px solid black;
+  }
+
+  .note.noire {
+    background-color: black;
+  }
+
+  .note.croche::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 15px;
+    background: black;
+    top: 2px;
+    right: -6px;
+  }
+
+  .note.double-croche::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    height: 15px;
+    background: black;
+    top: 2px;
+    right: -10px;
+    box-shadow: 0 6px black;
+  }

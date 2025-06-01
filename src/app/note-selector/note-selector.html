@@ -1,0 +1,7 @@
+<select [(ngModel)]="selectedNote">
+  <option [ngValue]="undefined" disabled selected>Choisir une note</option>
+  <option *ngFor="let note of notes" [ngValue]="note">
+    {{ note.nom }} ({{ note.type }})
+  </option>
+</select>
+<button (click)="ajouterNote()" [disabled]="!selectedNote">Ajouter</button>

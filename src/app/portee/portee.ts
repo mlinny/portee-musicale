@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Note } from '../../models/note.model';
-//import { NoteSelectorComponent } from '../note-selector/note-selector';
+import { PORTEE_CONSTANTES } from './portee.constantes';
 
 @Component({
   selector: 'app-portee',
@@ -13,14 +13,14 @@ import { Note } from '../../models/note.model';
 export class PorteeComponent {
   /*public notesAjoutees: Note[] = [];*/
   @Input() notes: Note[] = [];
-
+  readonly constantes = PORTEE_CONSTANTES;
 
   //ajouterNote(note: Note) {
   //  this.notesAjoutees.push(note);
   //}
 
   getPositionLeft(index: number): number {
-    return 130 + index * 30; // Décalage horizontal
+    return 130 + index * (PORTEE_CONSTANTES.NOTE_HEIGHT*2); // Décalage horizontal
   }
 
   getLignesSupplementaires(note: Note): { top: number, left: number }[] {
@@ -30,29 +30,29 @@ export class PorteeComponent {
     // Les notes au-dessus : position < 0
     console.log('traitement de la note : ', note)
     const lignes: { top: number, left: number }[] = [];
-    const positionNote = 90-note.position; // même calcul que pour la note
-    const premiereLigne = 90-20; // ligne de mi
-    const derniereLigne = 90 + 4 * 20; // position de la 5ème ligne
+    const positionNote = PORTEE_CONSTANTES.POSITION_SOL - note.position; // même calcul que pour la note
+    const premiereLigne = PORTEE_CONSTANTES.POSITION_SOL - PORTEE_CONSTANTES.ESPACEMENT_LIGNE; // ligne de mi
+    const derniereLigne = PORTEE_CONSTANTES.POSITION_SOL + 4 * PORTEE_CONSTANTES.ESPACEMENT_LIGNE; // position de la 5ème ligne
     console.log('premiere ligne :', premiereLigne, 'dernière ligne : ', derniereLigne);
 
     // Lignes sous la portée
     if (positionNote > derniereLigne) {
       console.log(positionNote, '>', derniereLigne);
       // Chaque 10px au-dessous de la dernière ligne = une ligne d’appoint
-      let n = Math.floor((positionNote - derniereLigne) / 20);
+      let n = Math.floor((positionNote - derniereLigne) / PORTEE_CONSTANTES.ESPACEMENT_LIGNE);
       console.log('n lignes sous la portée', n, positionNote, derniereLigne);
       for (let i = 1; i <= n; i++) {
-        lignes.push({ top: derniereLigne + i * 20 - positionNote + 10, left: -4 });
+        lignes.push({ top: derniereLigne + i * PORTEE_CONSTANTES.ESPACEMENT_LIGNE - positionNote + 8, left: -4 });
       }
     }
 
     // Lignes au-dessus de la portée
     if (positionNote < premiereLigne) {
       console.log(positionNote, '<', derniereLigne);
-      let n = Math.floor((premiereLigne - positionNote) / 20);
+      let n = Math.floor((premiereLigne - positionNote) / PORTEE_CONSTANTES.ESPACEMENT_LIGNE);
       console.log('n lignes au-dessus de la portée', n, positionNote, premiereLigne);
       for (let i = 1; i <= n; i++) {
-        lignes.push({ top: premiereLigne - i * 20 - positionNote + 10, left: -4 });
+        lignes.push({ top: premiereLigne - i * PORTEE_CONSTANTES.ESPACEMENT_LIGNE - positionNote + 8, left: -4 });
       }
     }
 

@@ -1,3 +1,4 @@
+
 <div class="portee-container">
   <img src="clef-de-sol.svg" class="clef" alt="Clé de sol" />
 
@@ -5,12 +6,12 @@
   <div class="barre-verticale"></div>
 
   <!-- Lignes de la portée -->
-  <div class="ligne" *ngFor="let i of [0,1,2,3,4]" [style.top.px]="40 + i*20"></div>
+  <div class="ligne" *ngFor="let i of [0,1,2,3,4]" [style.top.px]="constantes.PREMIERE_LIGNE + i* constantes.ESPACEMENT_LIGNE"></div>
 
   <!--Notes affichées -->
   <div class="note"
        *ngFor="let note of notes; index as i"
-       [style.top.px]="90 + note.position"
+       [style.top.px]="(constantes.POSITION_SOL+constantes.PREMIERE_LIGNE- 40) + note.position+2"
        [style.left.px]="getPositionLeft(i)"
        [class]="note.type || 'ronde'">
 

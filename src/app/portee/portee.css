@@ -25,24 +25,24 @@
 .ligne {
   position: absolute;
   left: 10px;
-  width: 80%;
+  width: 95%;
   height: 2px;
   background-color: black;
 }
 
 .ligne-supplementaire {
   position: absolute;
-  width: 28px;
+  width: 30px;
   height: 2px;
   background: black;
 }
 .note {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
+  width: 22px;
+  height: 18px;
+  border-radius: 50% / 50%; /* Ellipse */
   text-align: center;
-  line-height: 20px;
+  line-height: 18px;
   font-weight: bold;
   user-select: none;
   cursor: default;

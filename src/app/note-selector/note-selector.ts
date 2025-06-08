@@ -36,4 +36,14 @@ export class NoteSelectorComponent {
       console.warn('Aucune note sélectionnée');
     }
   }
+  ajouter10Random() {
+    console.log('== AJOUTER 10 NOTES ==');
+    for (let i = 0; i < 10; i++) {
+      const randomIndex = Math.floor(Math.random() * this.notes.length);
+      const note = this.notes[randomIndex];
+      console.log('Note sélectionnée : ', note);
+      this.noteAjoutee.emit(note);
+    }
+    console.log('10 notes émises');
+  }
 }

@@ -12,7 +12,12 @@
        *ngFor="let note of notes; index as i"
        [style.top.px]="90 + note.position"
        [style.left.px]="getPositionLeft(i)"
-       [class]="note.type || 'ronde'"></div>
-</div>
+       [class]="note.type || 'ronde'">
 
+    <div *ngFor="let ligne of getLignesSupplementaires(note)"
+         class="ligne-supplementaire"
+         [style.left.px]="ligne.left"
+         [style.top.px]="ligne.top"></div>
+  </div>
+</div>
 <!--<app-note-selector (noteAjoutee)="ajouterNote($event)" />-->

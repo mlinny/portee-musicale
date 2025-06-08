@@ -22,4 +22,41 @@ export class PorteeComponent {
   getPositionLeft(index: number): number {
     return 130 + index * 30; // Décalage horizontal
   }
+
+  getLignesSupplementaires(note: Note): { top: number, left: number }[] {
+    // Position des lignes de la portée (de 0 à 4) : 40, 60, 80, 100, 120 (exemple)
+    // Ici, la première ligne (en bas) est à position 40 (Do), puis chaque ligne est espacée de 20px
+    // Les notes sous la portée : position > 80
+    // Les notes au-dessus : position < 0
+    console.log('traitement de la note : ', note)
+    const lignes: { top: number, left: number }[] = [];
+    const positionNote = 90-note.position; // même calcul que pour la note
+    const premiereLigne = 90-20; // ligne de mi
+    const derniereLigne = 90 + 4 * 20; // position de la 5ème ligne
+    console.log('premiere ligne :', premiereLigne, 'dernière ligne : ', derniereLigne);
+
+    // Lignes sous la portée
+    if (positionNote > derniereLigne) {
+      console.log(positionNote, '>', derniereLigne);
+      // Chaque 10px au-dessous de la dernière ligne = une ligne d’appoint
+      let n = Math.floor((positionNote - derniereLigne) / 20);
+      console.log('n lignes sous la portée', n, positionNote, derniereLigne);
+      for (let i = 1; i <= n; i++) {
+        lignes.push({ top: derniereLigne + i * 20 - positionNote + 10, left: -4 });
+      }
+    }
+
+    // Lignes au-dessus de la portée
+    if (positionNote < premiereLigne) {
+      console.log(positionNote, '<', derniereLigne);
+      let n = Math.floor((premiereLigne - positionNote) / 20);
+      console.log('n lignes au-dessus de la portée', n, positionNote, premiereLigne);
+      for (let i = 1; i <= n; i++) {
+        lignes.push({ top: premiereLigne - i * 20 - positionNote + 10, left: -4 });
+      }
+    }
+
+    return lignes;
+  }
+
 }

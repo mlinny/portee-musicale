@@ -30,6 +30,12 @@
   background-color: black;
 }
 
+.ligne-supplementaire {
+  position: absolute;
+  width: 28px;
+  height: 2px;
+  background: black;
+}
 .note {
   position: absolute;
   width: 20px;

@@ -13,13 +13,19 @@
   height:auto;
 }
 
-.barre-verticale {
+.barre-verticale,
+.barre-verticale-intermediaire{
   position: absolute;
   left: 100px;
   top: 30px;
   width: 2px;
   height: 100px;
   background-color: grey;
+}
+
+.barre-verticale-intermediaire {
+  background: #333;
+  z-index: 2;
 }
 
 .ligne {

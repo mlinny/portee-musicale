@@ -20,7 +20,8 @@ export class PorteeComponent {
   //}
 
   getPositionLeft(index: number): number {
-    return 130 + index * (PORTEE_CONSTANTES.NOTE_HEIGHT*2); // Décalage horizontal
+    const nbBarres = Math.floor(index / 4);
+    return 130 + index * (PORTEE_CONSTANTES.NOTE_HEIGHT * 2) + nbBarres * 10; // Décalage horizontal
   }
 
   getLignesSupplementaires(note: Note): { top: number, left: number }[] {

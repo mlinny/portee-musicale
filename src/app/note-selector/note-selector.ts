@@ -46,4 +46,8 @@ export class NoteSelectorComponent {
     }
     console.log('10 notes émises');
   }
+  vider() {  
+    this.noteAjoutee.emit(undefined);
+    this.selectedNote = undefined;
+  }
 }

@@ -11,10 +11,9 @@
   <!--Notes affichées -->
   <div class="note"
        *ngFor="let note of notes; index as i"
-       [style.top.px]="(constantes.POSITION_SOL+constantes.PREMIERE_LIGNE- 40) + note.position+2"
-       [style.left.px]="getPositionLeft(i)"
-       [class]="note.type || 'ronde'">
-
+       [style.top.px]="(constantes.POSITION_SOL+constantes.PREMIERE_LIGNE- 40) + note.position"
+       [style.left.px]="getPositionLeft(i)">
+    <app-note-svg [type]="note.type || 'ronde'"></app-note-svg>
     <div *ngFor="let ligne of getLignesSupplementaires(note)"
          class="ligne-supplementaire"
          [style.left.px]="ligne.left"

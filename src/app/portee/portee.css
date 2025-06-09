@@ -38,20 +38,20 @@
 
 .ligne-supplementaire {
   position: absolute;
-  width: 30px;
+  width: 40px;
   height: 2px;
   background: black;
 }
 .note {
   position: absolute;
-  width: 22px;
+/*  width: 22px;
   height: 18px;
-  border-radius: 50% / 50%; /* Ellipse */
+  border-radius: 50% / 50%;  Ellipse 
   text-align: center;
   line-height: 18px;
   font-weight: bold;
   user-select: none;
-  cursor: default;
+  cursor: default;*/
 }
 
   .note.ronde {

@@ -2,11 +2,13 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Note } from '../../models/note.model';
 import { PORTEE_CONSTANTES } from './portee.constantes';
+import { NoteSvgComponent } from '../note-svg/note-svg.component';
+
 
 @Component({
   selector: 'app-portee',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, NoteSvgComponent],
   templateUrl: './portee.html',
   styleUrls: ['./portee.css']
 })
@@ -23,7 +25,9 @@ export class PorteeComponent {
     const nbBarres = Math.floor(index / 4);
     return 130 + index * (PORTEE_CONSTANTES.NOTE_HEIGHT * 2) + nbBarres * 10; // Décalage horizontal
   }
-
+  clear() {
+    this.notes = [];
+  }
   getLignesSupplementaires(note: Note): { top: number, left: number }[] {
     // Position des lignes de la portée (de 0 à 4) : 40, 60, 80, 100, 120 (exemple)
     // Ici, la première ligne (en bas) est à position 40 (Do), puis chaque ligne est espacée de 20px
@@ -43,7 +47,10 @@ export class PorteeComponent {
       let n = Math.floor((positionNote - derniereLigne) / PORTEE_CONSTANTES.ESPACEMENT_LIGNE);
       console.log('n lignes sous la portée', n, positionNote, derniereLigne);
       for (let i = 1; i <= n; i++) {
-        lignes.push({ top: derniereLigne + i * PORTEE_CONSTANTES.ESPACEMENT_LIGNE - positionNote + 8, left: -4 });
+        lignes.push({
+          top: derniereLigne + i * PORTEE_CONSTANTES.ESPACEMENT_LIGNE ,
+          left: 0
+        });
       }
     }
 
@@ -53,7 +60,7 @@ export class PorteeComponent {
       let n = Math.floor((premiereLigne - positionNote) / PORTEE_CONSTANTES.ESPACEMENT_LIGNE);
       console.log('n lignes au-dessus de la portée', n, positionNote, premiereLigne);
       for (let i = 1; i <= n; i++) {
-        lignes.push({ top: premiereLigne - i * PORTEE_CONSTANTES.ESPACEMENT_LIGNE - positionNote + 8, left: -4 });
+        lignes.push({ top: premiereLigne - i * PORTEE_CONSTANTES.ESPACEMENT_LIGNE , left: 0 });
       }
     }
 

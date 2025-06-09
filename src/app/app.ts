@@ -17,7 +17,14 @@ export class AppComponent {
 
   onNoteAjoutee(note: Note) {
     // Évite les doublons si besoin
+    if (note == undefined) {
+      console.log('== AUCUNE NOTE SÉLECTIONNÉE ==');
+      this.notes = [];
+      return;
+    }
+
     console.log('== NOTE REÇUE ==', note);
     this.notes = [...this.notes, note];
+
   }
 }

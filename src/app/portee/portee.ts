@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Note } from '../../models/note.model';
+import { Note, NoteDegreeTools } from '../../models/note.model';
 import { PORTEE_CONSTANTES } from './portee.constantes';
 import { NoteSvgComponent } from '../note-svg/note-svg.component';
 
@@ -33,6 +33,11 @@ export class PorteeComponent {
   //  this.notesAjoutees.push(note);
   //}
 
+  getPositionNote(note: Note): number {
+    let position = NoteDegreeTools.getPosition(note.degree, note.nom);
+    return position; // Position de la note sur la portée
+  }
+
   getPositionLeft(index: number): number {
     const nbBarres = Math.floor(index / this.duree);
     return 150 + index * (PORTEE_CONSTANTES.NOTE_HEIGHT * 2) + nbBarres * 10; // Décalage horizontal
@@ -47,7 +52,11 @@ export class PorteeComponent {
     // Les notes au-dessus : position < 0
     console.log('traitement de la note : ', note)
     const lignes: { top: number, left: number }[] = [];
-    const positionNote = PORTEE_CONSTANTES.POSITION_SOL - note.position; // même calcul que pour la note
+    let position: number=0;
+    if (note) {
+      position = NoteDegreeTools.getPosition(note.degree, note.nom);
+    }
+    const positionNote = PORTEE_CONSTANTES.POSITION_SOL - position; // même calcul que pour la note
     const premiereLigne = PORTEE_CONSTANTES.POSITION_SOL - PORTEE_CONSTANTES.ESPACEMENT_LIGNE; // ligne de mi
     const derniereLigne = PORTEE_CONSTANTES.POSITION_SOL + 4 * PORTEE_CONSTANTES.ESPACEMENT_LIGNE; // position de la 5ème ligne
     console.log('premiere ligne :', premiereLigne, 'dernière ligne : ', derniereLigne);

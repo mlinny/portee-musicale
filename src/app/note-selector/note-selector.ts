@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Note } from '../../models/note.model';
+import { Note, NoteDegree, NoteType, NoteValeur } from '../../models/note.model';
 
 @Component({
   selector: 'app-note-selector',
@@ -13,18 +13,18 @@ export class NoteSelectorComponent {
   @Output() noteAjoutee = new EventEmitter<Note>();
 
   notes: Note[] = [
-    { nom: 'Do', position: 40, type: 'noire' },
-    { nom: 'Ré', position: 30, type: 'noire' },
-    { nom: 'Mi', position: 20, type: 'noire' },
-    { nom: 'Fa', position: 10, type: 'noire' },
-    { nom: 'Sol', position: 0, type: 'noire' },
-    { nom: 'La', position: -10, type: 'noire' },
-    { nom: 'Si', position: -20, type: 'noire' }
+    { nom: NoteValeur.Do, degree: NoteDegree.Medium, type: NoteType.Noire },
+    { nom: NoteValeur.Re, degree: NoteDegree.Medium, type: NoteType.Noire },
+    { nom: NoteValeur.Mi, degree: NoteDegree.Medium, type: NoteType.Noire },
+    { nom: NoteValeur.Fa, degree: NoteDegree.Medium, type: NoteType.Noire },
+    { nom: NoteValeur.Sol, degree: NoteDegree.Medium, type: NoteType.Noire },
+    { nom: NoteValeur.La, degree: NoteDegree.Medium, type: NoteType.Noire },
+    { nom: NoteValeur.Si, degree: NoteDegree.Medium, type: NoteType.Noire }
   ];
 
   selectedNote?: Note;
 
-  
+
   ajouterNote() {
     console.log('== AJOUTER NOTE ==');
     console.log('selectedNote', this.selectedNote);
@@ -46,7 +46,7 @@ export class NoteSelectorComponent {
     }
     console.log('10 notes émises');
   }
-  vider() {  
+  vider() {
     this.noteAjoutee.emit(undefined);
     this.selectedNote = undefined;
   }

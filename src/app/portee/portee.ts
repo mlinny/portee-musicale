@@ -15,6 +15,7 @@ import { NoteSvgComponent } from '../note-svg/note-svg.component';
 export class PorteeComponent {
   /*public notesAjoutees: Note[] = [];*/
   @Input() notes: Note[] = [];
+  @Input() mesure: string = '4/4'; // <-- Ajout de la mesure
   readonly constantes = PORTEE_CONSTANTES;
 
   //ajouterNote(note: Note) {

@@ -16,7 +16,7 @@
 .barre-verticale,
 .barre-verticale-intermediaire{
   position: absolute;
-  left: 100px;
+  left: 130px;
   top: 30px;
   width: 2px;
   height: 100px;
@@ -91,3 +91,25 @@
     right: -10px;
     box-shadow: 0 6px black;
   }
+
+.mesure {
+  position: absolute;
+  left: 100px; /* Ajustez selon la position de la clé */
+  top: 35px;
+  width: 20px;
+  text-align: center;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 52px;
+  line-height: 1;
+  font-weight: bold; /* Met le texte en gras */
+  color: #888888;
+}
+
+.mesure-numerateur {
+  display: block;
+}
+
+.mesure-denominateur {
+  display: block;
+  margin-top: -12px;
+}

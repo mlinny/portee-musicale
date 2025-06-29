@@ -15,16 +15,27 @@ import { NoteSvgComponent } from '../note-svg/note-svg.component';
 export class PorteeComponent {
   /*public notesAjoutees: Note[] = [];*/
   @Input() notes: Note[] = [];
-  @Input() mesure: string = '4/4'; // <-- Ajout de la mesure
-  readonly constantes = PORTEE_CONSTANTES;
+  @Input()
+  set mesure(value: string) {
+    this._mesure = value;
+    const num = Number((value || '4/4').split('/')[0]);
+    this.duree = isNaN(num) ? 4 : num;
+    console.log('Duree mise à jour : ', this.duree, 'pour mesure', value);
+  }
+  get mesure(): string {
+    return this._mesure;
+  }
+  private _mesure: string = '4/4';
 
+  readonly constantes = PORTEE_CONSTANTES;
+  public duree: number = 4; // Durée par défaut, peut être modifiée
   //ajouterNote(note: Note) {
   //  this.notesAjoutees.push(note);
   //}
 
   getPositionLeft(index: number): number {
-    const nbBarres = Math.floor(index / 4);
-    return 130 + index * (PORTEE_CONSTANTES.NOTE_HEIGHT * 2) + nbBarres * 10; // Décalage horizontal
+    const nbBarres = Math.floor(index / this.duree);
+    return 150 + index * (PORTEE_CONSTANTES.NOTE_HEIGHT * 2) + nbBarres * 10; // Décalage horizontal
   }
   clear() {
     this.notes = [];

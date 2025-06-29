@@ -8,7 +8,7 @@ import { Note } from '../models/note.model';
   standalone: true,
   imports: [PorteeComponent, NoteSelectorComponent],
   template: `
-    <app-portee [notes]="notes" mesure="4/4"></app-portee>
+    <app-portee [notes]="notes" mesure="3/4"></app-portee>
     <app-note-selector (noteAjoutee)="onNoteAjoutee($event)"></app-note-selector>
   `
 })
